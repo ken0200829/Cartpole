@@ -1,0 +1,25 @@
+{"time":"2025-11-23T10:33:05.587057+09:00","level":"INFO","msg":"stream: starting","core version":"0.23.0"}
+{"time":"2025-11-23T10:33:05.886417+09:00","level":"INFO","msg":"stream: created new stream","id":"vw703pki"}
+{"time":"2025-11-23T10:33:05.886486+09:00","level":"INFO","msg":"handler: started","stream_id":"vw703pki"}
+{"time":"2025-11-23T10:33:05.886684+09:00","level":"INFO","msg":"stream: started","id":"vw703pki"}
+{"time":"2025-11-23T10:33:05.886915+09:00","level":"INFO","msg":"writer: started","stream_id":"vw703pki"}
+{"time":"2025-11-23T10:33:05.886922+09:00","level":"INFO","msg":"sender: started","stream_id":"vw703pki"}
+{"time":"2025-11-23T11:02:12.99453+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/ken-utm0200829-/flanker-task-rnn_v2/vw703pki/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:02:20.97968+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/ken-utm0200829-/flanker-task-rnn_v2/vw703pki/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:02:31.019937+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/ken-utm0200829-/flanker-task-rnn_v2/vw703pki/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:02:46.375214+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/ken-utm0200829-/flanker-task-rnn_v2/vw703pki/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:03:08.570775+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/ken-utm0200829-/flanker-task-rnn_v2/vw703pki/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:03:48.125335+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/ken-utm0200829-/flanker-task-rnn_v2/vw703pki/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:04:52.295986+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/ken-utm0200829-/flanker-task-rnn_v2/vw703pki/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:05:59.811506+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/ken-utm0200829-/flanker-task-rnn_v2/vw703pki/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:07:07.159522+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/ken-utm0200829-/flanker-task-rnn_v2/vw703pki/file_stream","body":"{\"error\":\"An internal error occurred. Please contact support.\"}"}
+{"time":"2025-11-23T11:08:22.032619+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-23T11:08:54.238994+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-23T11:09:02.33522+09:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/ken-utm0200829-/flanker-task-rnn_v2/vw703pki/file_stream","body":"{\"error\":\"context deadline exceeded\"}"}
+{"time":"2025-11-23T11:09:29.130785+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-11-23T11:16:27.362987+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-11-23T11:16:27.652148+09:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-11-23T11:16:27.670376+09:00","level":"INFO","msg":"stream: closing","id":"vw703pki"}
+{"time":"2025-11-23T11:16:27.670685+09:00","level":"INFO","msg":"handler: closed","stream_id":"vw703pki"}
+{"time":"2025-11-23T11:16:27.670822+09:00","level":"INFO","msg":"sender: closed","stream_id":"vw703pki"}
+{"time":"2025-11-23T11:16:27.670848+09:00","level":"INFO","msg":"stream: closed","id":"vw703pki"}

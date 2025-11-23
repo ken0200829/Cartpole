@@ -1,0 +1,55 @@
+データセットを作成中...
+60個のCSVファイルを検出しました
+最終的な系列数: 41058個
+
+モデルの訓練を開始します...
+Epoch 1/50 | Loss: 0.6892 | Acc: 64.24% | Val Loss: 0.2462 | Val Acc: 85.82%
+Epoch 2/50 | Loss: 0.5969 | Acc: 69.77% | Val Loss: 0.2461 | Val Acc: 85.23%
+Epoch 3/50 | Loss: 0.5931 | Acc: 69.84% | Val Loss: 0.2430 | Val Acc: 85.49%
+Epoch 4/50 | Loss: 0.5900 | Acc: 69.96% | Val Loss: 0.2454 | Val Acc: 84.76%
+Epoch 5/50 | Loss: 0.5886 | Acc: 69.98% | Val Loss: 0.2274 | Val Acc: 87.67%
+Epoch 6/50 | Loss: 0.5880 | Acc: 70.05% | Val Loss: 0.2327 | Val Acc: 86.43%
+Epoch 7/50 | Loss: 0.5868 | Acc: 70.08% | Val Loss: 0.2307 | Val Acc: 87.02%
+Epoch 8/50 | Loss: 0.5863 | Acc: 70.17% | Val Loss: 0.2263 | Val Acc: 87.74%
+Epoch 9/50 | Loss: 0.5860 | Acc: 70.09% | Val Loss: 0.2268 | Val Acc: 87.66%
+Epoch 10/50 | Loss: 0.5852 | Acc: 70.19% | Val Loss: 0.2282 | Val Acc: 87.15%
+Epoch 11/50 | Loss: 0.5856 | Acc: 70.11% | Val Loss: 0.2284 | Val Acc: 87.14%
+Epoch 12/50 | Loss: 0.5846 | Acc: 70.20% | Val Loss: 0.2326 | Val Acc: 86.48%
+Epoch 13/50 | Loss: 0.5849 | Acc: 70.17% | Val Loss: 0.2287 | Val Acc: 87.12%
+Epoch 14/50 | Loss: 0.5845 | Acc: 70.17% | Val Loss: 0.2322 | Val Acc: 86.55%
+Epoch 15/50 | Loss: 0.5837 | Acc: 70.15% | Val Loss: 0.2280 | Val Acc: 87.19%
+Epoch 16/50 | Loss: 0.5848 | Acc: 70.16% | Val Loss: 0.2354 | Val Acc: 86.12%
+Epoch 17/50 | Loss: 0.5839 | Acc: 70.17% | Val Loss: 0.2358 | Val Acc: 85.94%
+Epoch 18/50 | Loss: 0.5829 | Acc: 70.23% | Val Loss: 0.2345 | Val Acc: 86.16%
+Epoch 19/50 | Loss: 0.5838 | Acc: 70.23% | Val Loss: 0.2328 | Val Acc: 86.48%
+Epoch 20/50 | Loss: 0.5833 | Acc: 70.24% | Val Loss: 0.2524 | Val Acc: 83.83%
+Epoch 21/50 | Loss: 0.5827 | Acc: 70.30% | Val Loss: 0.2468 | Val Acc: 84.41%
+Epoch 22/50 | Loss: 0.5828 | Acc: 70.23% | Val Loss: 0.2432 | Val Acc: 85.00%
+Epoch 23/50 | Loss: 0.5832 | Acc: 70.23% | Val Loss: 0.2399 | Val Acc: 85.42%
+Epoch 24/50 | Loss: 0.5821 | Acc: 70.25% | Val Loss: 0.2325 | Val Acc: 86.59%
+Epoch 25/50 | Loss: 0.5829 | Acc: 70.23% | Val Loss: 0.2369 | Val Acc: 85.90%
+Epoch 26/50 | Loss: 0.5823 | Acc: 70.26% | Val Loss: 0.2336 | Val Acc: 86.37%
+Epoch 27/50 | Loss: 0.5819 | Acc: 70.23% | Val Loss: 0.2441 | Val Acc: 84.97%
+Epoch 28/50 | Loss: 0.5820 | Acc: 70.27% | Val Loss: 0.2349 | Val Acc: 86.05%
+Epoch 29/50 | Loss: 0.5822 | Acc: 70.24% | Val Loss: 0.2503 | Val Acc: 84.14%
+Epoch 30/50 | Loss: 0.5819 | Acc: 70.27% | Val Loss: 0.2453 | Val Acc: 84.73%
+Epoch 31/50 | Loss: 0.5829 | Acc: 70.18% | Val Loss: 0.2428 | Val Acc: 85.16%
+Epoch 32/50 | Loss: 0.5823 | Acc: 70.23% | Val Loss: 0.2471 | Val Acc: 84.48%
+Epoch 33/50 | Loss: 0.5819 | Acc: 70.28% | Val Loss: 0.2396 | Val Acc: 85.46%
+Epoch 34/50 | Loss: 0.5810 | Acc: 70.28% | Val Loss: 0.2414 | Val Acc: 85.28%
+Epoch 35/50 | Loss: 0.5808 | Acc: 70.32% | Val Loss: 0.2488 | Val Acc: 84.32%
+Epoch 36/50 | Loss: 0.5810 | Acc: 70.30% | Val Loss: 0.2532 | Val Acc: 83.87%
+Epoch 37/50 | Loss: 0.5819 | Acc: 70.26% | Val Loss: 0.2552 | Val Acc: 83.50%
+Epoch 38/50 | Loss: 0.5821 | Acc: 70.24% | Val Loss: 0.2498 | Val Acc: 84.13%
+Epoch 39/50 | Loss: 0.5815 | Acc: 70.29% | Val Loss: 0.2472 | Val Acc: 84.60%
+Epoch 40/50 | Loss: 0.5811 | Acc: 70.27% | Val Loss: 0.2548 | Val Acc: 83.63%
+Epoch 41/50 | Loss: 0.5805 | Acc: 70.32% | Val Loss: 0.2567 | Val Acc: 83.56%
+Epoch 42/50 | Loss: 0.5813 | Acc: 70.29% | Val Loss: 0.2543 | Val Acc: 83.73%
+Epoch 43/50 | Loss: 0.5809 | Acc: 70.27% | Val Loss: 0.2452 | Val Acc: 84.79%
+Epoch 44/50 | Loss: 0.5812 | Acc: 70.33% | Val Loss: 0.2615 | Val Acc: 82.88%
+Epoch 45/50 | Loss: 0.5809 | Acc: 70.29% | Val Loss: 0.2588 | Val Acc: 83.25%
+Epoch 46/50 | Loss: 0.5807 | Acc: 70.33% | Val Loss: 0.2596 | Val Acc: 83.17%
+Epoch 47/50 | Loss: 0.5803 | Acc: 70.31% | Val Loss: 0.2581 | Val Acc: 83.39%
+Epoch 48/50 | Loss: 0.5812 | Acc: 70.28% | Val Loss: 0.2552 | Val Acc: 83.82%
+Epoch 49/50 | Loss: 0.5803 | Acc: 70.35% | Val Loss: 0.2572 | Val Acc: 83.37%
+Epoch 50/50 | Loss: 0.5815 | Acc: 70.24% | Val Loss: 0.2495 | Val Acc: 84.24%

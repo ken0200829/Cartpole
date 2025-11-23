@@ -1,0 +1,59 @@
+_wandb:
+    value:
+        cli_version: 0.23.0
+        e:
+            wpapv3n1i5vjcprznufx2w2qbg64ii02:
+                apple:
+                    ecpuCores: 4
+                    gpuCores: 10
+                    memoryGb: 24
+                    name: Apple M2
+                    pcpuCores: 4
+                    ramTotalBytes: "25769803776"
+                    swapTotalBytes: "9663676416"
+                codePath: train_flanker_a2c.py
+                codePathLocal: train_flanker_a2c.py
+                cpu_count: 8
+                cpu_count_logical: 8
+                disk:
+                    /:
+                        total: "994662584320"
+                        used: "434389708800"
+                email: ken.utm0200829@gmail.com
+                executable: /Users/utsumikensuke/Research/Cartpole/.venv/bin/python
+                git:
+                    remote: https://github.com/ken0200829/Cartpole.git
+                host: utsumikensukenoMacBook-Air.local
+                memory:
+                    total: "25769803776"
+                os: macOS-26.1-arm64-arm-64bit
+                program: /Users/utsumikensuke/Research/Cartpole/train_flanker_a2c.py
+                python: CPython 3.12.4
+                root: /Users/utsumikensuke/Research/Cartpole
+                startedAt: "2025-11-23T05:54:45.447998Z"
+                writerId: wpapv3n1i5vjcprznufx2w2qbg64ii02
+        m: []
+        python_version: 3.12.4
+        t:
+            "1":
+                - 1
+            "2":
+                - 1
+            "3":
+                - 1
+                - 2
+                - 16
+            "4": 3.12.4
+            "5": 0.23.0
+            "12": 0.23.0
+            "13": darwin-arm64
+device:
+    value: cpu
+entropy_beta:
+    value: 0.01
+gamma:
+    value: 0.99
+learning_rate:
+    value: 0.0001
+max_episodes:
+    value: 20000

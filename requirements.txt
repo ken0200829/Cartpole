@@ -1,0 +1,7 @@
+numpy
+matplotlib
+torch
+gym==0.26.2
+gymnasium[classic-control]
+imageio
+pandas

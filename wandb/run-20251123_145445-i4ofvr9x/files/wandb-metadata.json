@@ -1,0 +1,36 @@
+{
+  "os": "macOS-26.1-arm64-arm-64bit",
+  "python": "CPython 3.12.4",
+  "startedAt": "2025-11-23T05:54:45.447998Z",
+  "program": "/Users/utsumikensuke/Research/Cartpole/train_flanker_a2c.py",
+  "codePath": "train_flanker_a2c.py",
+  "codePathLocal": "train_flanker_a2c.py",
+  "git": {
+    "remote": "https://github.com/ken0200829/Cartpole.git"
+  },
+  "email": "ken.utm0200829@gmail.com",
+  "root": "/Users/utsumikensuke/Research/Cartpole",
+  "host": "utsumikensukenoMacBook-Air.local",
+  "executable": "/Users/utsumikensuke/Research/Cartpole/.venv/bin/python",
+  "cpu_count": 8,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "994662584320",
+      "used": "434389708800"
+    }
+  },
+  "memory": {
+    "total": "25769803776"
+  },
+  "apple": {
+    "name": "Apple M2",
+    "ecpuCores": 4,
+    "pcpuCores": 4,
+    "gpuCores": 10,
+    "memoryGb": 24,
+    "swapTotalBytes": "9663676416",
+    "ramTotalBytes": "25769803776"
+  },
+  "writerId": "wpapv3n1i5vjcprznufx2w2qbg64ii02"
+}

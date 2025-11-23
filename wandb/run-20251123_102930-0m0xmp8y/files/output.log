@@ -1,0 +1,15 @@
+データセットを作成中...
+60個のCSVファイルを検出しました
+最終的な系列数: 41058個
+
+モデルの訓練を開始します...
+Traceback (most recent call last):
+  File "/Users/utsumikensuke/Research/Cartpole/rnn_learner.py", line 475, in <module>
+    main()
+  File "/Users/utsumikensuke/Research/Cartpole/rnn_learner.py", line 461, in main
+    history = train_model(
+              ^^^^^^^^^^^^
+  File "/Users/utsumikensuke/Research/Cartpole/rnn_learner.py", line 377, in train_model
+    val_probs_all = np.concatenate(val_probs_all, axis=0) # (TotalSamples, Seq, Class)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: all the input array dimensions except for the concatenation axis must match exactly, but along dimension 1, the array at index 0 has size 87 and the array at index 1 has size 89
