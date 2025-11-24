@@ -72,14 +72,13 @@ class FlankerDataset(Dataset):
         # 初期状態
         prev_reward = 0.0
         prev_action_idx = -1
-        prev_rt = 0.0 # 初期RTは0msとする
 
         for _, row in df_ep.iterrows():
             flanker_char = str(row["flanker_direction"])
             target_char = str(row["target_direction"])
             
-            # ★ 共通関数を使用 (prev_rtを追加)
-            input_vec = make_rnn_input_vector(flanker_char, target_char, prev_reward, prev_action_idx, prev_rt)
+            # ★ 共通関数を使用
+            input_vec = make_rnn_input_vector(flanker_char, target_char, prev_reward, prev_action_idx)
             seq.append(input_vec)
             
             # --- 次のステップのために更新 ---
@@ -87,13 +86,6 @@ class FlankerDataset(Dataset):
             resp_idx = DIR_MAP.get(resp_char, -1)
             
             prev_action_idx = resp_idx
-            
-            # RT更新 (CSVのカラム名が 'response_time' であると仮定)
-            # 欠損値の場合は平均的な値(例: 400ms)や0を入れる処理が必要かもしれません
-            current_rt = row.get("response_time", 0.0)
-            if pd.isna(current_rt):
-                current_rt = 0.0
-            prev_rt = float(current_rt)
             
             # 報酬更新
             t_idx = DIR_MAP.get(target_char, 0)
@@ -343,7 +335,7 @@ def pad_collate_fn(batch):
 #                 val_task_correct += (predicted == targets.reshape(-1)).sum().item()
 
 #                 val_tp += ((predicted == nogo_class_index) & (labels_flat == nogo_class_index)).sum().item()
-#                 val_fn += ((predicted != nogo_class_index) & (labels_flat == nogo_class_index)).sum().item()
+#                 val_fn += ((predicted != nogo_class_index) & (labelsFlat == nogo_class_index)).sum().item()
                 
 #                 # ログ用 (バッチ次元を残すため reshape 前のものを使う)
 #                 # ここで保存する配列の形状は (Batch, SeqLen, Class) や (Batch, SeqLen)
@@ -416,11 +408,11 @@ def pad_collate_fn(batch):
 
 
 def train_model(model, train_loader, val_loader, num_epochs=50, learning_rate=0.001, patience=10, use_wandb=True, temperature=1.0):
-    # 【修正点1】nn.CrossEntropyLoss に ignore_index=-1 を指定。
-    # -1 のラベルを持つデータは損失計算から自動的に除外されます。
     criterion = nn.CrossEntropyLoss(ignore_index=-1)
     
-    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+    # 変更: weight_decay=1e-4 (または 1e-5) を追加
+    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=1e-4)
+    
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=5)
     
     if use_wandb:
@@ -434,7 +426,7 @@ def train_model(model, train_loader, val_loader, num_epochs=50, learning_rate=0.
     best_val_acc = 0.0
     best_val_loss = float('inf')
     epochs_no_improve = 0
-    early_stop = False
+    # early_stop = True  <-- 削除: これがTrueだと即座に終了してしまうため
     
     history = {
         'train_loss': [], 'train_acc': [], 'train_task_acc': [], 'train_recall': [],
@@ -442,9 +434,10 @@ def train_model(model, train_loader, val_loader, num_epochs=50, learning_rate=0.
     }
     
     for epoch in range(num_epochs):
-        if early_stop:
-            print(f"\n早期停止: {patience}エポック連続で訓練ロスが改善しませんでした")
-            break
+        # 削除: ループ先頭でのチェックを削除
+        # if early_stop:
+        #     print(f"\n早期停止: {patience}エポック連続で訓練ロスが改善しませんでした")
+        #     break
             
         model.train()
         train_loss = 0.0
@@ -617,14 +610,15 @@ def main():
     config = {
         'sequence_length': 10,
         'batch_size': 64,
-        'hidden_size': 64,
-        'num_layers': 2,
-        'dropout': 0.3,
+        'hidden_size': 16,
+        'num_layers': 1,
+        'num_classes': 4,
         'learning_rate': 0.001,
-        'num_epochs': 50,
-        'patience': 10,
-        'use_attention': True,
-        'temperature': 1.0,
+        'num_epochs': 5000,
+        # 変更: 0.0 -> 0.3 または 0.5 に上げる
+        'dropout': 0.5, 
+        'use_wandb': True,
+        "patience": 100
     }
     
     wandb.init(project="flanker-task-rnn_v2", config=config)
@@ -643,9 +637,9 @@ def main():
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, collate_fn=pad_collate_fn)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, collate_fn=pad_collate_fn)
     
-    # モデル作成: input_size=22
+    # モデル作成: input_size=21
     model = FlankerRNN(
-        input_size=22,  # 変更: 16+1+4+1
+        input_size=21,  # 変更: 16+1+4
         hidden_size=config['hidden_size'],
         num_layers=config['num_layers'],
         num_classes=4,

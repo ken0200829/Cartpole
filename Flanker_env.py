@@ -11,7 +11,7 @@ from models import FlankerRNN, make_rnn_input_vector, DIR_MAP # <--- 追加
 
 # パス設定
 DATA_PATH = "/Users/utsumikensuke/Research/RNN_test/data/test"
-LEARNER_PATH = "/Users/utsumikensuke/Research/Cartpole/model_weights/best_flanker_rnn_model.pth"
+LEARNER_PATH = "/Users/utsumikensuke/Research/Cartpole/model_weights/best_flanker_rnn_model_kl.pth"
 
 # 方向のマッピング
 # DIR_MAP = {'R': 0, 'L': 1, 'U': 2, 'D': 3} # 変更前
@@ -19,7 +19,8 @@ LEARNER_PATH = "/Users/utsumikensuke/Research/Cartpole/model_weights/best_flanke
 # 例: Flanker=R(0), Target=L(1) -> 0*4 + 1 = 1
 
 class FlankerEnv(gym.Env):
-    def __init__(self, learner_hidden_size=64):
+    # 修正: 学習済みモデルに合わせてデフォルトを 16 に変更
+    def __init__(self, learner_hidden_size=16):
         super(FlankerEnv, self).__init__()
         
         self.n_actions = 16 # 4 Flanker x 4 Target
@@ -71,8 +72,6 @@ class FlankerEnv(gym.Env):
         super().reset(seed=seed)
         
         # 1. ランダムにCSVファイルを選び、その中からランダムなnth_playを選ぶ
-        # (ここでは1ファイル=1参加者と仮定せず、全ファイルからランダムなnth_playを探す簡易実装)
-        # 実際にはファイル構造に合わせて調整してください
         if not self.csv_files:
             return np.zeros(16, dtype=np.float32), {}
 
@@ -83,6 +82,9 @@ class FlankerEnv(gym.Env):
         unique_plays = df['nth_play'].unique()
         selected_play = random.choice(unique_plays)
         play_data = df[df['nth_play'] == selected_play]
+        
+        # ★追加: 分布チェック用にデータを保存しておく
+        self.df_play = play_data
         
         # 2. 制約条件（各刺激の登場回数）をカウント
         self.stimulus_counts = np.zeros(16, dtype=int)
@@ -106,7 +108,6 @@ class FlankerEnv(gym.Env):
         # 前回の学習者行動と報酬（初期値）
         self.last_learner_action = torch.zeros(1, 4).to(self.device)
         self.last_reward = torch.zeros(1, 1).to(self.device)
-        self.last_rt = 0.0 # 追加: 前回のRT (ms)
         
         # 観測: [現在の試行数, 残り回数(16)]
         obs = np.concatenate(([float(self.current_step)], self.current_counts)).astype(np.float32)
@@ -145,10 +146,10 @@ class FlankerEnv(gym.Env):
         else:
             prev_act_idx = torch.argmax(self.last_learner_action).item()
             
-        # ★ 共通関数を使用 (self.last_rt を渡す)
-        input_vec_np = make_rnn_input_vector(flanker_char, target_char, prev_rew_val, prev_act_idx, self.last_rt)
+        # ★ 共通関数を使用
+        input_vec_np = make_rnn_input_vector(flanker_char, target_char, prev_rew_val, prev_act_idx)
         
-        # Tensorに変換して次元調整 (Batch=1, Seq=1, Feature=21)
+        # Tensorに変換 (Batch=1, Seq=1, Feature=21)
         rnn_input = torch.from_numpy(input_vec_np).float().to(self.device).unsqueeze(0).unsqueeze(0)
         
         # 4. 学習者の推論

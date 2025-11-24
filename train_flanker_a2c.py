@@ -23,7 +23,7 @@ os.makedirs(SAVE_DIR, exist_ok=True)
 def train():
     # wandbの初期化
     wandb.init(
-        project="flanker-adversarial-a2c",
+        project="flanker-adversarial-a2c_kl",
         config={
             "learning_rate": LEARNING_RATE,
             "gamma": GAMMA,

@@ -13,14 +13,14 @@ from models import FlankerRNN, make_rnn_input_vector, DIR_MAP
 OUTPUT_DIR = "sim_results_baseline"
 NUM_SIMULATIONS = 10  # 評価するnth_playの数
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-LEARNER_HIDDEN_SIZE = 64
+LEARNER_HIDDEN_SIZE = 16
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 def run_baseline_simulation():
     # 1. RNNモデルの準備
-    # 修正: 16(stim) + 1(rew) + 4(act) + 1(rt) = 22
-    input_size = 22
+    # 修正: 16(stim) + 1(rew) + 4(act) = 21
+    input_size = 21
     
     # Flanker_env.pyのFlankerEnv.__init__と一致させる
     learner = FlankerRNN(
@@ -66,7 +66,6 @@ def run_baseline_simulation():
         # 前回の学習者行動と報酬（初期値）
         last_learner_action_idx = -1 # 初期状態は行動なし
         last_reward_val = 0.0
-        last_rt_val = 0.0 # 追加: 前回のRT
         
         results = []
         correct_count = 0
@@ -77,10 +76,10 @@ def run_baseline_simulation():
             flanker = row.get('flanker_direction', 'R')
             target = row.get('response_direction', 'R')
             
-            # ★ 共通関数を使用して入力ベクトルを作成 (last_rt_valを追加)
-            input_vec_np = make_rnn_input_vector(flanker, target, last_reward_val, last_learner_action_idx, last_rt_val)
+            # ★ 共通関数を使用して入力ベクトルを作成
+            input_vec_np = make_rnn_input_vector(flanker, target, last_reward_val, last_learner_action_idx)
             
-            # Tensorに変換 (Batch=1, Seq=1, Feature=22)
+            # Tensorに変換 (Batch=1, Seq=1, Feature=21)
             rnn_input = torch.from_numpy(input_vec_np).float().to(DEVICE).unsqueeze(0).unsqueeze(0)
             
             # 推論

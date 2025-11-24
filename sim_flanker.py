@@ -96,6 +96,55 @@ def run_simulation():
         # 結果の保存
         df = pd.DataFrame(step_data)
         
+        # --- 追加: 刺激の分布チェック ---
+        print(f"  [Distribution Check]")
+        
+        # 1. エージェントが提示した刺激の集計
+        # 'flanker'と'target'の組み合わせで集計 (例: "RR", "RL"...)
+        df['stimulus_type'] = df['flanker'] + df['target']
+        agent_counts = df['stimulus_type'].value_counts().sort_index()
+        
+        # 2. 元のデータ(Ground Truth)の刺激の集計
+        original_counts = {}
+        
+        # 修正: env.sequence_data ではなく env.df_play を使用
+        if hasattr(env, 'df_play'):
+            for _, row in env.df_play.iterrows():
+                f_char = row.get('flanker_direction', 'R')
+                # target_directionがあればそれを、なければresponse_directionを使用
+                t_char = row.get('target_direction', row.get('response_direction', 'R'))
+                
+                stim_type = f_char + t_char
+                original_counts[stim_type] = original_counts.get(stim_type, 0) + 1
+        else:
+            print("Warning: env.df_play not found. Cannot calculate original distribution.")
+            
+        # 比較表示
+        all_types = sorted(list(set(agent_counts.index) | set(original_counts.keys())))
+        
+        print(f"    {'Type':<6} | {'Original':<10} | {'Agent':<10} | {'Diff':<10}")
+        print(f"    {'-'*45}")
+        
+        distribution_data = []
+        for st in all_types:
+            orig_n = original_counts.get(st, 0)
+            agent_n = agent_counts.get(st, 0)
+            diff = agent_n - orig_n
+            print(f"    {st:<6} | {orig_n:<10} | {agent_n:<10} | {diff:<10}")
+            
+            distribution_data.append({
+                "stimulus_type": st,
+                "original_count": orig_n,
+                "agent_count": agent_n,
+                "difference": diff
+            })
+            
+        # 分布データもCSVとして保存 (別ファイル)
+        dist_save_path = os.path.join(OUTPUT_DIR, f"sim_{sim_idx:03d}_dist.csv")
+        pd.DataFrame(distribution_data).to_csv(dist_save_path, index=False)
+        print(f"  Distribution data saved to {dist_save_path}")
+        # --------------------------------
+        
         # 正答率計算
         accuracy = df["learner_correct"].mean()
         

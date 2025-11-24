@@ -1,2 +1,5 @@
 \.venv
 \sim_results
+\model_weights
+\sim_results_baseline
+\wandb
